@@ -1,4 +1,4 @@
-import os
+ import os
 import re
 import sys
 import json
@@ -155,7 +155,7 @@ async def account_login(bot: Client, m: Message):
 
             elif 'd26g5bnklkwsh4.cloudfront.net' in url or 'd1d34p8vz63oiq.cloudfront.net' in url:
              id =  url.split("/")[-2]
-             url =  "https://psitoffers.store/testkey.php?vid=" + id + "&quality=" + raw_text2
+            url =  "https://psitoffers.store/testkey.php?vid=" + id + "&quality=" + raw_text2
 
             if "youtu" in url:
                 ytf = f"b[height<={raw_text2}][ext=mp4]/bv[height<={raw_text2}][ext=mp4]+ba[ext=m4a]/b[ext=mp4]"
