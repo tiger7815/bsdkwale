@@ -151,9 +151,10 @@ async def account_login(bot: Client, m: Message):
             
             elif '/master.mpd' in url:
              id =  url.split("/")[-2]
-            elif 'd26g5bnklkwsh4.cloudfront.net' in url or 'd1d34p8vz63oiq.cloudfront.net' in url:
-             id =  url.split("/")[-2]
-             url =  "https://master-extract-api-8180936ccf13.herokuapp.com/?url={url}"
+            url =  "https://d26g5bnklkwsh4.cloudfront.net/" + id + "/master.m3u8"
+            
+           elif '/master.mpd' in url:                
+            url = f'https://master-extract-api-8180936ccf13.herokuapp.com/?url={url}'
 
             name1 = links[i][0].replace("\t", "").replace(":", "").replace("/", "").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").replace("https", "").replace("http", "").strip()
             name = f'{str(count).zfill(3)}) {name1[:60]}'
