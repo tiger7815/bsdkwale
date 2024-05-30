@@ -72,7 +72,7 @@ bot = Client(
 
 @bot.on_message(filters.command(["start"]))
 async def account_login(bot: Client, m: Message):
-    editable = await m.reply_text("I Am A Bot For Download Links From Your **.TXT** File. \n\n **Bot Made By Lmao ** \n\n Send /getvideo ")
+    editable = await m.reply_text("I Am A Bot For Download Links From Your **.TXT** File. \n\n **Bot Made By Leo♌️** \n\n Send /Leo ")
 
 
 @bot.on_message(filters.command("stop") & filters.user(ADMINS))
@@ -83,7 +83,7 @@ async def restart_handler(_, m):
 
 @bot.on_message(filters.command(["getvideo"]) & filters.user(ADMINS))
 async def account_login(bot: Client, m: Message):
-    editable = await m.reply_text('Send me **TXT File**⚡️')
+    editable = await m.reply_text('Send me **TXT File**♌️')
     input: Message = await bot.listen(editable.chat.id)
     x = await input.download()
     await input.delete(True)
@@ -104,7 +104,7 @@ async def account_login(bot: Client, m: Message):
            os.remove(x)
            return
 
-    await editable.edit(f"**𝕋ᴏᴛᴀʟ ʟɪɴᴋ𝕤 ғᴏᴜɴᴅ ᴀʀᴇ🔗🔗** **{len(links)}**\n\n**𝕊ᴇɴᴅ 𝔽ʀᴏᴍ ᴡʜᴇʀᴇ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ᴅᴏᴡɴʟᴏᴀᴅ ɪɴɪᴛɪᴀʟ ɪ𝕤** **1**")
+    await editable.edit(f"**Total Links Found Are🔗🔗** **{len(links)}**\n\n**Send From Where You Want To Download Intial Is** **1**")
     input0: Message = await bot.listen(editable.chat.id)
     raw_text = input0.text
     await input0.delete(True)
@@ -153,8 +153,8 @@ async def account_login(bot: Client, m: Message):
                 
                 cmd = f'yt-dlp "{url}" -o "{name}.mp4"'
             try:  
-                cc = f'**[🎬] Vid_ID:** {str(count).zfill(3)}\n\n**Tɪᴛʟᴇ » {name}.mkv\n\n** **Bᴀᴛᴄʜ** » **{raw_text0}**\n\n**Downloaded by** » **{MR}**'
-                Show = f"**⏬️ 🄳🄾🅆🄽🄻🄾🄰🄳🄸🄽🄶 ⏬️... »**\n\n**🧾Name »** `{name}`\n♻️**Quality »** `Whatever best available`\n\n**🔗URL »** `{url}`"
+                cc = f'**Vid_ID:** {str(count).zfill(3)}\n\n**Title » {name}.mkv\n\n** **Batch** » **{raw_text0}**\n\n**Downloaded By** : **{MR}**'
+                Show = f"** Downloading  »**\n\n**Name »** `{name}`\n**Quality »** `Whatever best available`\n\n**URL »** `{url}`"
                 prog = await m.reply_text(Show)
                 res_file = await helper.download_video(url, cmd, name)
                 filename = res_file
@@ -171,6 +171,6 @@ async def account_login(bot: Client, m: Message):
 
     except Exception as e:
         await m.reply_text(e)
-    await m.reply_text("**DONE**")
+    await m.reply_text("**Done Leo♌️**")
 
 bot.run()
