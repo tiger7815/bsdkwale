@@ -75,13 +75,13 @@ async def account_login(bot: Client, m: Message):
     editable = await m.reply_text("I Am A Bot For Download Links From Your **.TXT** File. \n\n **Bot Made By Leo♌️** \n\n Send /Leo ")
 
 
-@bot.on_message(filters.command("stop") & filters.user(ADMINS))
+@bot.on_message(filters.command("Restart") & filters.user(ADMINS))
 async def restart_handler(_, m):
-    await m.reply_text("**Stopped**⚠️", True)
+    await m.reply_text("**Restarted**♌️", True)
     os.execl(sys.executable, sys.executable, *sys.argv)
 
 
-@bot.on_message(filters.command(["getvideo"]) & filters.user(ADMINS))
+@bot.on_message(filters.command(["Leo"]) & filters.user(ADMINS))
 async def account_login(bot: Client, m: Message):
     editable = await m.reply_text('Send me **TXT File**♌️')
     input: Message = await bot.listen(editable.chat.id)
@@ -104,7 +104,7 @@ async def account_login(bot: Client, m: Message):
            os.remove(x)
            return
 
-    await editable.edit(f"**Total Links Found Are🔗🔗** **{len(links)}**\n\n**Send From Where You Want To Download Intial Is** **1**")
+    await editable.edit(f"**Total Links Found Are ** **{len(links)}**\n\n**Send From Where You Want To Download Intial Is** **1**")
     input0: Message = await bot.listen(editable.chat.id)
     raw_text = input0.text
     await input0.delete(True)
