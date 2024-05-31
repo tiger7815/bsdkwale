@@ -31,19 +31,18 @@ bot = Client(
 
 @bot.on_message(filters.command(["start"]))
 async def account_login(bot: Client, m: Message):
-    editable = await m.reply_text("Hi!\n\nGive /TIGER Command to Downlaod From a Text file.\n")
+    editable = await m.reply_text("I Am A Bot For Download Links From Your **.TXT** File. \n\n **Bot Made By Leo♌️** \n\n Send /Leo ")
 
 
-@bot.on_message(filters.command("restart"))
+@bot.on_message(filters.command("Restart") & filters.user(ADMINS))
 async def restart_handler(_, m):
-    await m.reply_text("**Restarted**🚦", True)
+    await m.reply_text("**Restarted**♌️", True)
     os.execl(sys.executable, sys.executable, *sys.argv)
 
 
-
-@bot.on_message(filters.command(["TIGER"]))
+@bot.on_message(filters.command(["Leo"]) & filters.user(ADMINS))
 async def account_login(bot: Client, m: Message):
-    editable = await m.reply_text('Hi\n\nTO download a test file send here » ')
+    editable = await m.reply_text('Send me **TXT File**♌️')
     input: Message = await bot.listen(editable.chat.id)
     x = await input.download()
     await input.delete(True)
@@ -56,61 +55,35 @@ async def account_login(bot: Client, m: Message):
        content = content.split("\n")
        links = []
        for i in content:
-           links.append(i.split("://", 1))
+           links.append(i)
+        
        os.remove(x)
-            # print(len(links)
     except:
-           await m.reply_text("Invalid file input.")
+           await m.reply_text("**Invalid file input.**")
            os.remove(x)
            return
-    
-   
-    await editable.edit(f"Total links found are **{len(links)}**\n\nSend From where you want to download initial is **1**")
+
+    await editable.edit(f"**Total Links Found Are ** **{len(links)}**\n\n**Send From Where You Want To Download Intial Is** **1**")
     input0: Message = await bot.listen(editable.chat.id)
     raw_text = input0.text
     await input0.delete(True)
 
-    await editable.edit("**Enter Batch Name**")
+    await editable.edit("**Send Me Your Batch Name**")
     input1: Message = await bot.listen(editable.chat.id)
     raw_text0 = input1.text
     await input1.delete(True)
-    
 
-    await editable.edit("**Enter resolution**")
-    input2: Message = await bot.listen(editable.chat.id)
-    raw_text2 = input2.text
-    await input2.delete(True)
-    try:
-        if raw_text2 == "144":
-            res = "256x144"
-        elif raw_text2 == "240":
-            res = "426x240"
-        elif raw_text2 == "360":
-            res = "640x360"
-        elif raw_text2 == "480":
-            res = "854x480"
-        elif raw_text2 == "720":
-            res = "1280x720"
-        elif raw_text2 == "1080":
-            res = "1920x1080" 
-        else: 
-            res = "UN"
-    except Exception:
-            res = "UN"
-    
-    
-
-    await editable.edit("Enter A Captio to add Otherwise send   **no**")
+    await editable.edit("Downloaded By or send `no` to skip")
     input3: Message = await bot.listen(editable.chat.id)
     raw_text3 = input3.text
     await input3.delete(True)
-    highlighter  = f"️ ⁪⁬⁮⁮⁮"
+    highlighter  = ""
     if raw_text3 == 'no':
-        MR = highlighter 
+        MR = highlighter
     else:
         MR = raw_text3
-   
-   await editable.edit("Now send the **Thumbnail URL**\n\nOr if you don't want any thumbnail send = no")
+
+    await editable.edit("Now send the **Thumbnail URL**\n\nOr if you don't want any thumbnail send = no")
     input6 = message = await bot.listen(editable.chat.id)
     raw_text6 = input6.text
     await input6.delete(True)
@@ -127,9 +100,10 @@ async def account_login(bot: Client, m: Message):
     else:
         count = int(raw_text)
 
+
+
     try:
         for i in range(count - 1, len(links)):
-
             V = links[i][1].replace("file/d/","uc?export=download&id=").replace("www.youtube-nocookie.com/embed", "youtu.be").replace("?modestbranding=1", "").replace("/view?usp=sharing","") # .replace("mpd","m3u8")
             url = "https://" + V
 
