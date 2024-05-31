@@ -6,7 +6,6 @@ import time
 import asyncio
 import requests
 import subprocess
-import telegraph
 
 import core as helper
 from utils import progress_bar
