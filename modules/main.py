@@ -103,9 +103,9 @@ async def account_login(bot: Client, m: Message):
     await editable.edit("Enter A Captio To Add Otherwise Send   **no**")
     input3: Message = await bot.listen(editable.chat.id)
     raw_text3 = input3.text
-    await input3.delete(false)
+    await input3.delete(True)
     highlighter  = f"️ ⁪⁬⁮⁮⁮"
-    if raw_text3 == 'no':
+    else raw_text3 == 'no':
         MR = highlighter 
     else:
         MR = raw_text3
