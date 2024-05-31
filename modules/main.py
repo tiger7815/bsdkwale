@@ -9,7 +9,7 @@ import subprocess
 
 import core as helper
 from utils import progress_bar
-from vars import *
+from vars import api_id, api_hash, bot_token
 from aiohttp import ClientSession
 from pyromod import listen
 from subprocess import getstatusoutput
@@ -21,6 +21,7 @@ from pyrogram.errors.exceptions.bad_request_400 import StickerEmojiInvalid
 from pyrogram.types.messages_and_media import message
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
+
 bot = Client(
     "bot",
     api_id=api_id,
@@ -30,18 +31,19 @@ bot = Client(
 
 @bot.on_message(filters.command(["start"]))
 async def account_login(bot: Client, m: Message):
-    editable = await m.reply_text("I Am A Bot For Download Links From Your **.TXT** File. \n\n **Bot Made By Leo♌️** \n\n Send /Leo ")
+    editable = await m.reply_text("Hi!\n\nGive /TIGER Command to Downlaod From a Text file.\n")
 
 
-@bot.on_message(filters.command("Restart"))
+@bot.on_message(filters.command("restart"))
 async def restart_handler(_, m):
-    await m.reply_text("**Restarted**♌️", True)
+    await m.reply_text("**Restarted**🚦", True)
     os.execl(sys.executable, sys.executable, *sys.argv)
 
 
-@bot.on_message(filters.command(["Leo"]))
+
+@bot.on_message(filters.command(["TIGER"]))
 async def account_login(bot: Client, m: Message):
-    editable = await m.reply_text('Send me **TXT File**♌️')
+    editable = await m.reply_text('Hi\n\nTO download a test file send here » ')
     input: Message = await bot.listen(editable.chat.id)
     x = await input.download()
     await input.delete(True)
@@ -54,40 +56,67 @@ async def account_login(bot: Client, m: Message):
        content = content.split("\n")
        links = []
        for i in content:
-           links.append(i)
-        
+           links.append(i.split("://", 1))
        os.remove(x)
+            # print(len(links)
     except:
-           await m.reply_text("**Invalid file input.**")
+           await m.reply_text("Invalid file input.")
            os.remove(x)
            return
-
-    await editable.edit(f"**Total Links Found Are ** **{len(links)}**\n\n**Send From Where You Want To Download Intial Is** **1**")
+    
+   
+    await editable.edit(f"Total links found are **{len(links)}**\n\nSend From where you want to download initial is **1**")
     input0: Message = await bot.listen(editable.chat.id)
     raw_text = input0.text
     await input0.delete(True)
 
-    await editable.edit("**Send Me Your Batch Name**")
+    await editable.edit("**Enter Batch Name**")
     input1: Message = await bot.listen(editable.chat.id)
     raw_text0 = input1.text
     await input1.delete(True)
+    
 
-    await editable.edit("Downloaded By or send `no` to skip")
+    await editable.edit("**Enter resolution**")
+    input2: Message = await bot.listen(editable.chat.id)
+    raw_text2 = input2.text
+    await input2.delete(True)
+    try:
+        if raw_text2 == "144":
+            res = "256x144"
+        elif raw_text2 == "240":
+            res = "426x240"
+        elif raw_text2 == "360":
+            res = "640x360"
+        elif raw_text2 == "480":
+            res = "854x480"
+        elif raw_text2 == "720":
+            res = "1280x720"
+        elif raw_text2 == "1080":
+            res = "1920x1080" 
+        else: 
+            res = "UN"
+    except Exception:
+            res = "UN"
+    
+    
+
+    await editable.edit("Enter A Captio to add Otherwise send   **no**")
     input3: Message = await bot.listen(editable.chat.id)
     raw_text3 = input3.text
     await input3.delete(True)
-    highlighter  = ""
+    highlighter  = f"️ ⁪⁬⁮⁮⁮"
     if raw_text3 == 'no':
-        MR = highlighter
+        MR = highlighter 
     else:
         MR = raw_text3
-
-    await editable.edit("Now send the **Thumbnail URL**\n\nOr if you don't want any thumbnail send = no")
+   
+    await editable.edit("Now send the **Thumb url**\nEg » ```https://telegra.ph/file/0633f8b6a6f110d34f044.jpg```\n\nor Send `no`")
     input6 = message = await bot.listen(editable.chat.id)
     raw_text6 = input6.text
     await input6.delete(True)
-    thumb = input6.text
     await editable.delete()
+
+    thumb = input6.text
     if thumb.startswith("http://") or thumb.startswith("https://"):
         getstatusoutput(f"wget '{thumb}' -O 'thumb.jpg'")
         thumb = "thumb.jpg"
@@ -99,10 +128,9 @@ async def account_login(bot: Client, m: Message):
     else:
         count = int(raw_text)
 
-
-
     try:
         for i in range(count - 1, len(links)):
+
             V = links[i][1].replace("file/d/","uc?export=download&id=").replace("www.youtube-nocookie.com/embed", "youtu.be").replace("?modestbranding=1", "").replace("/view?usp=sharing","") # .replace("mpd","m3u8")
             url = "https://" + V
 
@@ -130,9 +158,9 @@ async def account_login(bot: Client, m: Message):
             name = f'{str(count).zfill(3)}) {name1[:60]}'
 
             if "youtu" in url:
-                ytf = f"b[height<={raw_text0}][ext=mp4]/bv[height<={raw_text0}][ext=mp4]+ba[ext=m4a]/b[ext=mp4]"
+                ytf = f"b[height<={raw_text2}][ext=mp4]/bv[height<={raw_text2}][ext=mp4]+ba[ext=m4a]/b[ext=mp4]"
             else:
-                ytf = f"b[height<={raw_text0}]/bv[height<={raw_text0}]+ba/b/bv+ba"
+                ytf = f"b[height<={raw_text2}]/bv[height<={raw_text2}]+ba/b/bv+ba"
 
             if "jw-prod" in url:
                 cmd = f'yt-dlp -o "{name}.mp4" "{url}"'
@@ -170,7 +198,7 @@ async def account_login(bot: Client, m: Message):
                         time.sleep(e.x)
                         continue
                 else:
-                    Show = f"**⥥ Downloading »**\n\n**Name »** `{name}\nQuality » {raw_text0}`\n\n**Url »** `{url}`"
+                    Show = f"**⥥ Downloading »**\n\n**Name »** `{name}\nQuality » {raw_text2}`\n\n**Url »** `{url}`"
                     prog = await m.reply_text(Show)
                     res_file = await helper.download_video(url, cmd, name)
                     filename = res_file
@@ -187,7 +215,7 @@ async def account_login(bot: Client, m: Message):
 
     except Exception as e:
         await m.reply_text(e)
-    await m.reply_text("Done")
+    await m.reply_text("Done Leo♌️")
 
 
 bot.run()
