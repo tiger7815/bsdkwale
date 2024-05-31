@@ -103,7 +103,7 @@ async def account_login(bot: Client, m: Message):
     await editable.edit("Enter A Captio To Add Otherwise Send   **no**")
     input3: Message = await bot.listen(editable.chat.id)
     raw_text3 = input3.text
-    if input3.delete(True)
+    await input3.delete(True)
     highlighter  = f"️ ⁪⁬⁮⁮⁮"
     if raw_text3 == 'no':
         MR = highlighter 
@@ -171,8 +171,8 @@ async def account_login(bot: Client, m: Message):
 
             try:  
                 
-                cc = f'** {str(count).zfill(3)}.** {𝗻𝗮𝗺𝗲𝟭}{MR}Leo♌️.mkv\n\n**Batch Name :** {raw_text0}\n\n**Downloaded By** : **{MR}**'
-                cc1 = f'** {str(count).zfill(3)}.** {𝗻𝗮𝗺𝗲𝟭}{MR}Leo♌️.pdf \n\n**Batch Name :** {raw_text0}\n\n**Downloaded By** : **{MR}**'
+                cc = f'** {str(count).zfill(3)}.** {𝗻𝗮𝗺𝗲𝟭}{MR}♌️.mkv\n\n**Batch Name :** {raw_text0}\n\n**Downloaded By** : **{MR}**'
+                cc1 = f'** {str(count).zfill(3)}.** {𝗻𝗮𝗺𝗲𝟭}{MR}♌️.pdf \n\n**Batch Name :** {raw_text0}\n\n**Downloaded By** : **{MR}**'
                 if "drive" in url:
                     try:
                         ka = await helper.download(url, name)
