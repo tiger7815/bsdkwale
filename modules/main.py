@@ -6,10 +6,11 @@ import time
 import asyncio
 import requests
 import subprocess
+import telegraph
 
 import core as helper
 from utils import progress_bar
-from vars import api_id, api_hash, bot_token
+from vars import *
 from aiohttp import ClientSession
 from pyromod import listen
 from subprocess import getstatusoutput
@@ -20,7 +21,6 @@ from pyrogram.errors import FloodWait
 from pyrogram.errors.exceptions.bad_request_400 import StickerEmojiInvalid
 from pyrogram.types.messages_and_media import message
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-
 
 bot = Client(
     "bot",
