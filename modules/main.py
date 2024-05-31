@@ -110,13 +110,12 @@ async def account_login(bot: Client, m: Message):
     else:
         MR = raw_text3
    
-    await editable.edit("Now send the **Thumb url**\nEg » ```https://telegra.ph/file/0633f8b6a6f110d34f044.jpg```\n\nor Send `no`")
+   await editable.edit("Now send the **Thumbnail URL**\n\nOr if you don't want any thumbnail send = no")
     input6 = message = await bot.listen(editable.chat.id)
     raw_text6 = input6.text
     await input6.delete(True)
-    await editable.delete()
-
     thumb = input6.text
+    await editable.delete()
     if thumb.startswith("http://") or thumb.startswith("https://"):
         getstatusoutput(f"wget '{thumb}' -O 'thumb.jpg'")
         thumb = "thumb.jpg"
@@ -171,7 +170,7 @@ async def account_login(bot: Client, m: Message):
 
             try:  
                 
-                cc = f'** {str(count).zfill(3)}.** {𝗻𝗮𝗺𝗲𝟭}{MR}.mkv\n**Batch »** {raw_text0}\n\n'
+                cc = f'** {str(count).zfill(3)}.** {𝗻𝗮𝗺𝗲𝟭}{MR}.mkv\n**Batch »** {raw_text0}\n\n**Downloaded By** : **{MR}**'
                 cc1 = f'** {str(count).zfill(3)}.** {𝗻𝗮𝗺𝗲𝟭}{MR}.pdf \n**Batch »** {raw_text0}\n\n'
                 if "drive" in url:
                     try:
