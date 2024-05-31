@@ -33,13 +33,13 @@ async def account_login(bot: Client, m: Message):
     editable = await m.reply_text("I Am A Bot For Download Links From Your **.TXT** File. \n\n **Bot Made By Leo♌️** \n\n Send /Leo ")
 
 
-@bot.on_message(filters.command("Restart") & filters.user(ADMINS))
+@bot.on_message(filters.command("Restart"))
 async def restart_handler(_, m):
     await m.reply_text("**Restarted**♌️", True)
     os.execl(sys.executable, sys.executable, *sys.argv)
 
 
-@bot.on_message(filters.command(["Leo"]) & filters.user(ADMINS))
+@bot.on_message(filters.command(["Leo"]))
 async def account_login(bot: Client, m: Message):
     editable = await m.reply_text('Send me **TXT File**♌️')
     input: Message = await bot.listen(editable.chat.id)
