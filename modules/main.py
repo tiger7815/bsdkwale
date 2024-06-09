@@ -152,7 +152,7 @@ async def account_login(bot: Client, m: Message):
 
             elif 'd26g5bnklkwsh4.cloudfront.net' in url or 'd1d34p8vz63oiq.cloudfront.net' in url:
                 id =  url.split("/")[-2]
-                url = f"https://penpencilvod.pc.cdn.bitgravity.com/{id}/master.m3u8"
+                url =  "https://pw.jarviss.workers.dev?v=" + id + "&quality=" + raw_text2
 
             name1 = links[i][0].replace("\t", "").replace(":", "").replace("/", "").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").replace("https", "").replace("http", "").strip()
             name = f'{str(count).zfill(3)}) {name1[:60]}'
